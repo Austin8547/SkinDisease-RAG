@@ -2,7 +2,7 @@ import fitz
 from pathlib import Path
 
 pdf_folder = Path("/home/austin/agentic/skin_rag/dermnetfiles")
-output_folder = Path("/home/austin/agentic/skin_rag/images")
+output_folder = Path("/home/austin/agentic/skin_rag/data/images")
 
 output_folder.mkdir(exist_ok=True)
 

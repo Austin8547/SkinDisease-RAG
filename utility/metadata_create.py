@@ -1,8 +1,8 @@
 from pathlib import Path
 import json
 
-image_folder = Path("/home/austin/agentic/skin_rag/images")
-metadata_file = Path("/home/austin/agentic/skin_rag/meta_data.json")
+image_folder = Path("/home/austin/agentic/skin_rag/data/images")
+metadata_file = Path("/home/austin/agentic/skin_rag/data/meta_data.json")
 
 metadata = []
 

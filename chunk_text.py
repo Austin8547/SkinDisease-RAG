@@ -5,8 +5,8 @@ from langchain_core.documents import Document
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 
 
-input_file = Path("/home/austin/agentic/skin_rag/dataset/clean_text.json")
-output_file = Path("/home/austin/agentic/skin_rag/dataset/chunks.json")
+input_file = Path("/home/austin/agentic/skin_rag/data/clean_text.json")
+output_file = Path("/home/austin/agentic/skin_rag/data/chunks.json")
 
 
 # 1. Load cleaned JSON

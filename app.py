@@ -1,178 +1,142 @@
-import os
 import streamlit as st
+import os
 
-from rag import generate_answer
-from retrieval import retrieve
-
-
-# --------------------------------------------------
 # Page configuration
-# --------------------------------------------------
-
 st.set_page_config(
-    page_title="Skin Disease RAG",
+    page_title="Skin Disease RAG Assistant",
     page_icon="🩺",
-    layout="wide"
+    layout="wide",
+    initial_sidebar_state="expanded"
 )
 
+# Custom Styling
+st.markdown("""
+    <style>
+    .main-header {
+        font-size: 2.2rem;
+        font-weight: 700;
+        color: #1E293B;
+        margin-bottom: 0.2rem;
+    }
+    .sub-header {
+        font-size: 1rem;
+        color: #64748B;
+        margin-bottom: 2rem;
+    }
+    .answer-box {
+        background-color: #F8FAFC;
+        border-left: 4px solid #3B82F6;
+        padding: 1.25rem;
+        border-radius: 0.5rem;
+        margin-bottom: 1.5rem;
+        font-size: 1.05rem;
+        line-height: 1.6;
+    }
+    .img-card {
+        border: 1px solid #E2E8F0;
+        border-radius: 8px;
+        padding: 10px;
+        background-color: #FFFFFF;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        margin-bottom: 15px;
+    }
+    </style>
+""", unsafe_allow_html=True)
+
+# Cache model/imports so Streamlit doesn't reload heavy dependencies on every click
+@st.cache_resource
+def load_rag_pipeline():
+    from rag import generate_answer
+    return generate_answer
+
+generate_answer = load_rag_pipeline()
 
 # --------------------------------------------------
-# Paths
+# Sidebar Configuration
 # --------------------------------------------------
-
-IMAGE_DIR = "dataset/images"
-
+with st.sidebar:
+    st.image("https://cdn-icons-png.flaticon.com/512/387/387561.png", width=70)
+    st.title("RAG Configuration")
+    
+    max_images = st.slider("Max Images to Retrieve", min_value=1, max_value=6, value=3)
+    
+    st.markdown("---")
+    st.markdown("### System Details")
+    st.markdown("- **Embedding:** `BAAI/bge-base-en-v1.5`")
+    st.markdown("- **Vector Store:** ChromaDB")
+    st.markdown("- **LLM:** Groq (`qwen3.8-27b`)")
+    
+    st.markdown("---")
+    st.caption("⚠️ **Disclaimer:** This tool is for educational/informational purposes only. Consult a healthcare professional for clinical diagnostics.")
 
 # --------------------------------------------------
-# Helper function to get images
+# Main UI Layout
 # --------------------------------------------------
+st.markdown('<div class="main-header">🩺 Skin Disease RAG Assistant</div>', unsafe_allow_html=True)
+st.markdown('<div class="sub-header">AI-Powered Diagnostic Information & Visual Reference System</div>', unsafe_allow_html=True)
 
-def get_disease_images(disease, max_images=5):
-    """
-    Get images from the folder corresponding to the disease.
-    """
-
-    disease_folder = disease.lower().replace(" ", "_")
-
-    folder_path = os.path.join(
-        IMAGE_DIR,
-        disease_folder
+# Query Input Form
+with st.form(key="search_form"):
+    user_query = st.text_input(
+        "Enter your question or symptoms:",
+        placeholder="e.g., What causes acanthosis nigricans? or What are the signs of melanoma?",
     )
+    submit_button = st.form_submit_button(label="🔍 Search Knowledge Base", use_container_width=True)
 
-    if not os.path.exists(folder_path):
-        return []
-
-    image_files = []
-
-    for filename in os.listdir(folder_path):
-
-        if filename.lower().endswith(
-            (".jpg", ".jpeg", ".png", ".webp")
-        ):
-            image_files.append(
-                os.path.join(folder_path, filename)
-            )
-
-    return image_files[:max_images]
-
+# Sample Query Chips
+st.markdown("**Example Questions:**")
+col_e1, col_e2, col_e3 = st.columns(3)
+if col_e1.button("What causes acanthosis nigricans?"):
+    user_query = "What causes acanthosis nigricans?"
+    submit_button = True
+if col_e2.button("How to treat atopic dermatitis?"):
+    user_query = "How to treat atopic dermatitis?"
+    submit_button = True
+if col_e3.button("Symptoms of psoriasis"):
+    user_query = "Symptoms of psoriasis"
+    submit_button = True
 
 # --------------------------------------------------
-# UI
+# Results Execution
 # --------------------------------------------------
+if submit_button and user_query:
+    with st.spinner("Searching medical records & processing answer..."):
+        try:
+            # Execute RAG Pipeline
+            result = generate_answer(user_query, max_images=max_images)
+            
+            st.markdown("### 📋 Medical Insights")
+            
+            # Display LLM Text Response
+            st.markdown(f'<div class="answer-box">{result["answer"]}</div>', unsafe_allow_html=True)
 
-st.title("🩺 Skin Disease RAG")
-
-st.write(
-    "Ask questions about the skin-disease knowledge base."
-)
-
-
-query = st.text_input(
-    "Enter your question",
-    placeholder="What causes acanthosis nigricans?"
-)
-
-
-# --------------------------------------------------
-# Ask button
-# --------------------------------------------------
-
-if st.button("Ask"):
-
-    if not query.strip():
-
-        st.warning("Please enter a question.")
-
-    else:
-
-        with st.spinner(
-            "Searching knowledge base and generating answer..."
-        ):
-
-            # Retrieve relevant text chunks
-            results = retrieve(
-                query,
-                top_k=5
-            )
-
-            # Generate RAG answer
-            answer = generate_answer(query)
-
-
-        # --------------------------------------------------
-        # Answer
-        # --------------------------------------------------
-
-        st.subheader("Answer")
-
-        st.write(answer)
-
-
-        # --------------------------------------------------
-        # Relevant Images
-        # --------------------------------------------------
-
-        st.subheader("🖼️ Relevant Images")
-
-        displayed_diseases = set()
-
-        for result in results:
-
-            disease = result["disease"]
-
-            # Avoid displaying the same disease multiple times
-            if disease in displayed_diseases:
-                continue
-
-            displayed_diseases.add(disease)
-
-            images = get_disease_images(
-                disease,
-                max_images=5
-            )
+            # Display Retrieved Images
+            st.markdown("### 📸 Visual References")
+            images = result.get("images", [])
 
             if images:
+                # Create grid columns dynamically for images
+                cols = st.columns(min(len(images), 3))
+                
+                for idx, img in enumerate(images):
+                    col = cols[idx % 3]
+                    
+                    # Try retrieving image path key flexible to common schema names
+                    img_path = img.get("image_path") or img.get("file_path") or img.get("file_name") or img.get("url")
+                    disease_label = img.get("disease", "Condition Reference")
 
-                st.write(f"**{disease}**")
-
-                # Create columns for images
-                columns = st.columns(
-                    min(len(images), 5)
-                )
-
-                for i, image_path in enumerate(images):
-
-                    with columns[i]:
-                        st.image(
-                            image_path,
-                            use_container_width=True
-                        )
-
+                    with col:
+                        st.markdown('<div class="img-card">', unsafe_allow_html=True)
+                        if img_path and os.path.exists(img_path):
+                            st.image(img_path, caption=f"{disease_label}", use_container_width=True)
+                        elif img_path and (img_path.startswith("http://") or img_path.startswith("https://")):
+                            st.image(img_path, caption=f"{disease_label}", use_container_width=True)
+                        else:
+                            # Display metadata placeholder if local image file isn't found at exact path
+                            st.warning(f"🖼️ **Image Metadata Found**\n\n**Disease:** {disease_label}\n\n*File:* `{img_path}`")
+                        st.markdown('</div>', unsafe_allow_html=True)
             else:
+                st.info("No matching visual reference images were found for this query.")
 
-                st.info(
-                    f"No images found for {disease}."
-                )
-
-
-        # --------------------------------------------------
-        # Retrieved Sources
-        # --------------------------------------------------
-
-        st.subheader("📚 Retrieved Sources")
-
-        for i, result in enumerate(results):
-
-            with st.expander(
-                f"Result {i + 1} — {result['disease']}"
-            ):
-
-                st.write(
-                    f"**Source:** {result['source_pdf']}"
-                )
-
-                st.write(
-                    f"**Distance:** {result['distance']}"
-                )
-
-                st.write(result["text"])
+        except Exception as e:
+            st.error(f"An error occurred while generating the answer: {str(e)}")

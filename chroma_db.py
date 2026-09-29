@@ -8,8 +8,8 @@ import chromadb
 # 1. Paths
 # --------------------------------------------------
 
-input_file = Path("/home/austin/agentic/skin_rag/dataset/embedded_chunks.json")
-chroma_path = Path("/home/austin/agentic/skin_rag/dataset/chroma_db")
+input_file = Path("/home/austin/agentic/skin_rag/data/embedded_chunks.json")
+chroma_path = Path("/home/austin/agentic/skin_rag/data/chroma_db")
 
 
 # --------------------------------------------------

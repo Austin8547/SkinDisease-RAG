@@ -8,8 +8,8 @@ from sentence_transformers import SentenceTransformer
 # 1. File paths
 # --------------------------------------------------
 
-input_file = Path("/home/austin/agentic/skin_rag/dataset/chunks.json")
-output_file = Path("/home/austin/agentic/skin_rag/dataset/embedded_chunks.json")
+input_file = Path("/home/austin/agentic/skin_rag/data/chunks.json")
+output_file = Path("/home/austin/agentic/skin_rag/data/embedded_chunks.json")
 
 
 # --------------------------------------------------

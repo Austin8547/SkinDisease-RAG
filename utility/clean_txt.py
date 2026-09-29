@@ -2,8 +2,8 @@ import json
 import re
 from pathlib import Path
 
-input_file = Path("/home/austin/agentic/skin_rag/dataset/text.json")
-output_file = Path("/home/austin/agentic/skin_rag/dataset/clean_text.json")
+input_file = Path("/home/austin/agentic/skin_rag/data/text.json")
+output_file = Path("/home/austin/agentic/skin_rag/data/clean_text.json")
 
 # Load extracted text
 with open(input_file, "r", encoding="utf-8") as f:

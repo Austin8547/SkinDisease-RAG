@@ -3,7 +3,7 @@ from pathlib import Path
 import json
 
 pdf_folder = Path("/home/austin/agentic/skin_rag/dermnetfiles")
-output_file = Path("dataset/text.json")
+output_file = Path("/home/austin/agentic/skin_rag/data/text.json")
 
 data = []
 

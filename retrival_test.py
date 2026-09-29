@@ -18,7 +18,7 @@ model = SentenceTransformer(
 # --------------------------------------------------
 
 client = chromadb.PersistentClient(
-    path="/home/austin/agentic/skin_rag/dataset/chroma_db"
+    path="/home/austin/agentic/skin_rag/data/chroma_db"
 )
 
 collection = client.get_collection(
