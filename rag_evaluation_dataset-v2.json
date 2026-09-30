@@ -1,0 +1,552 @@
+[
+  {
+    "id": "eval_001",
+    "question": "What primary factors contribute to the pathogenesis of acne?",
+    "retrieved_context": "Acne is a widespread chronic skin condition predominantly impacting teenagers and young adults by causing the expansion and clogging of hair follicles and oil glands. The underlying causes involve multiple factors such as genetics, hormones, bacteria, and immune responses.",
+    "ground_truth": "Acne pathogenesis is multifactorial, driven by genetics, hormonal influences, bacterial proliferation, and localized immune responses that lead to clogged and inflamed hair follicles and sebaceous glands.",
+    "source_document": "Acne.pdf",
+    "metadata": {
+      "category": "etiology",
+      "difficulty": "easy"
+    }
+  },
+  {
+    "id": "eval_002",
+    "question": "How do treatment approaches for acne vary based on severity?",
+    "retrieved_context": "Treatment approaches are tailored to the severity of the outbreak, utilizing everything from topical creams and washes for mild cases to oral antibiotics, hormonal therapy, and powerful medications like isotretinoin for moderate to severe presentations.",
+    "ground_truth": "Mild acne is managed with topical creams and washes, whereas moderate to severe acne requires oral antibiotics, hormonal therapy, or systemic agents such as isotretinoin.",
+    "source_document": "Acne.pdf",
+    "metadata": {
+      "category": "treatment",
+      "difficulty": "medium"
+    }
+  },
+  {
+    "id": "eval_003",
+    "question": "What is the primary clinical significance and main complication of actinic keratoses?",
+    "retrieved_context": "The main concern is that actinic keratoses indicate an increased risk of cutaneous squamous cell carcinoma. Actinic keratoses are the result of abnormal skin cell development due to DNA damage by short wavelength UVB.",
+    "ground_truth": "Actinic keratoses are precancerous lesions resulting from UVB-induced DNA damage; their primary significance is an elevated risk of progression to cutaneous squamous cell carcinoma (SCC).",
+    "source_document": "Actinic keratoses (Solar keratosis)_ Diagnosis and Treatment \u2014 DermNet.pdf",
+    "metadata": {
+      "category": "complications",
+      "difficulty": "medium"
+    }
+  },
+  {
+    "id": "eval_004",
+    "question": "What procedural treatments are used to treat hyperkeratotic actinic keratoses or cutaneous horns?",
+    "retrieved_context": "Shave, curettage (scraping with a sharp instrument) and electrocautery (burning) may be necessary to remove a cutaneous horn or actinic keratosis. Excision ensures the actinic keratosis has been completely removed.",
+    "ground_truth": "Hyperkeratotic lesions or cutaneous horns stem from actinic keratosis and can be treated via shave biopsy, curettage and electrocautery, or full surgical excision.",
+    "source_document": "Actinic keratoses (Solar keratosis)_ Diagnosis and Treatment \u2014 DermNet.pdf",
+    "metadata": {
+      "category": "treatment",
+      "difficulty": "medium"
+    }
+  },
+  {
+    "id": "eval_005",
+    "question": "What type of hypersensitivity reaction is allergic contact dermatitis and what is its typical onset time?",
+    "retrieved_context": "Allergic contact dermatitis is a type IV (delayed) hypersensitivity reaction, which typically occurs 24-72 hours after exposure to an allergen.",
+    "ground_truth": "Allergic contact dermatitis is a Type IV delayed hypersensitivity reaction that typically manifests 24 to 72 hours following contact with an allergen.",
+    "source_document": "Allergic Contact Dermatitis_ Symptoms, Causes, and Treatment - DermNet.pdf",
+    "metadata": {
+      "category": "pathophysiology",
+      "difficulty": "easy"
+    }
+  },
+  {
+    "id": "eval_006",
+    "question": "What are common triggers for allergic contact dermatitis?",
+    "retrieved_context": "Common allergens that trigger contact dermatitis reactions include: Nickel in jewellery and piercings, Fragrances in perfumes and household items, Rosin in adhesive plasters, Paraphenylenediamine in permanent hair dye, Rubber accelerator chemicals in gloves.",
+    "ground_truth": "Common allergen triggers include nickel in jewelry, fragrances in cosmetics, rosin in plasters, paraphenylenediamine (PPD) in hair dyes, and rubber accelerators in gloves.",
+    "source_document": "Allergic Contact Dermatitis_ Symptoms, Causes, and Treatment - DermNet.pdf",
+    "metadata": {
+      "category": "etiology",
+      "difficulty": "medium"
+    }
+  },
+  {
+    "id": "eval_007",
+    "question": "What underlying disease mechanism causes alopecia areata?",
+    "retrieved_context": "Alopecia areata is an autoimmune condition characterized by the body attacking its own hair follicles, leading to patchy or complete hair loss across the scalp and body.",
+    "ground_truth": "Alopecia areata is an autoimmune disorder where the immune system targets hair follicles, resulting in patchy or total alopecia on the scalp and body.",
+    "source_document": "Alopecia Areata_ Causes, Diagnosis, and Treatment \u2014 DermNet.pdf",
+    "metadata": {
+      "category": "pathophysiology",
+      "difficulty": "easy"
+    }
+  },
+  {
+    "id": "eval_008",
+    "question": "What medical interventions are available to manage alopecia areata?",
+    "retrieved_context": "While there is no known cure, various interventions ranging from localized corticosteroid injections to advanced systemic JAK inhibitors are available to help manage symptoms and encourage regrowth.",
+    "ground_truth": "Treatment options include intralesional or topical corticosteroid injections and systemic Janus kinase (JAK) inhibitors to stimulate hair regrowth.",
+    "source_document": "Alopecia Areata_ Causes, Diagnosis, and Treatment \u2014 DermNet.pdf",
+    "metadata": {
+      "category": "treatment",
+      "difficulty": "medium"
+    }
+  },
+  {
+    "id": "eval_009",
+    "question": "What are the key clinical symptoms and anatomical features of angular cheilitis?",
+    "retrieved_context": "Angular cheilitis is a common, non-contagious inflammatory condition that causes symmetrical redness, cracking, and oozing at the corners of the mouth.",
+    "ground_truth": "Angular cheilitis presents as painful, symmetrical erythema, fissuring, scaling, and oozing localized specifically at the labial commissures (corners of the mouth).",
+    "source_document": "Angular Cheilitis_ Symptoms, Causes, and Management with Images \u2014 DermNet.pdf",
+    "metadata": {
+      "category": "clinical_features",
+      "difficulty": "easy"
+    }
+  },
+  {
+    "id": "eval_010",
+    "question": "What underlying predisposing factors contribute to angular cheilitis?",
+    "retrieved_context": "Underlying triggers include excess moisture from saliva, nutritional deficiencies, ill-fitting dentures, and immune suppression.",
+    "ground_truth": "Factors including pooling saliva at the mouth corners, vitamin/nutritional deficiencies (iron, B vitamins), ill-fitting dental prostheses, and immunosuppression predispose patients to angular cheilitis.",
+    "source_document": "Angular Cheilitis_ Symptoms, Causes, and Management with Images \u2014 DermNet.pdf",
+    "metadata": {
+      "category": "etiology",
+      "difficulty": "medium"
+    }
+  },
+  {
+    "id": "eval_011",
+    "question": "How do aphthous ulcers clinically present and what are their common triggers?",
+    "retrieved_context": "Aphthous ulcers, commonly known as canker sores, are frequent, painful sores that develop on the mucous membranes inside the mouth or genital regions. Outbreaks are often triggered by stress, nutritional shortfalls, physical trauma, or genetic predisposition.",
+    "ground_truth": "Aphthous ulcers present as discrete, painful mucosal sores with a yellowish center and surrounding erythematous halo. Outbreaks are triggered by emotional stress, trauma, nutritional deficiencies, or genetic factors.",
+    "source_document": "Aphthous ulceration (aphthae, ulcers).pdf",
+    "metadata": {
+      "category": "clinical_features",
+      "difficulty": "easy"
+    }
+  },
+  {
+    "id": "eval_012",
+    "question": "What are the three clinical classifications of aphthous ulcers based on size and healing?",
+    "retrieved_context": "Aphthous ulcers are categorized into minor, major, or herpetiform varieties depending on their size and healing duration.",
+    "ground_truth": "Aphthous ulcerations are classified clinically into minor aphthae, major aphthae, and herpetiform aphthae.",
+    "source_document": "Aphthous ulceration (aphthae, ulcers).pdf",
+    "metadata": {
+      "category": "classification",
+      "difficulty": "medium"
+    }
+  },
+  {
+    "id": "eval_013",
+    "question": "What are the hallmark clinical features of atopic dermatitis?",
+    "retrieved_context": "Atopic dermatitis is a widespread, chronic inflammatory skin condition characterized by severe dryness, intense itching, and recurrent rashes that frequently manifests in infancy.",
+    "ground_truth": "Atopic dermatitis is marked by severe xerosis (dry skin), intense pruritus (itching), and recurrent inflammatory eczematous papules and plaques.",
+    "source_document": "Atopic dermatitis (Atopic Eczema)_ Symptoms and Causes \u2014 DermNet.pdf",
+    "metadata": {
+      "category": "clinical_features",
+      "difficulty": "easy"
+    }
+  },
+  {
+    "id": "eval_014",
+    "question": "What factors influence the onset and chronicity of atopic eczema?",
+    "retrieved_context": "Atopic dermatitis manifests in infancy and is heavily influenced by genetic and environmental factors... serving as a lifelong skin sensitivity.",
+    "ground_truth": "Atopic dermatitis is driven by genetic skin barrier dysfunction (such as filaggrin gene mutations) combined with environmental triggers and immune dysregulation.",
+    "source_document": "Atopic dermatitis (Atopic Eczema)_ Symptoms and Causes \u2014 DermNet.pdf",
+    "metadata": {
+      "category": "etiology",
+      "difficulty": "medium"
+    }
+  },
+  {
+    "id": "eval_015",
+    "question": "What common diagnostic blood tests and swabs are performed for severe bacterial skin infections?",
+    "retrieved_context": "Procalcitonin: blood test marker for generalised sepsis due to bacterial infection. Blood culture: if fever (>38\u2070C). Swab of the skin lesion sent for microscopy, culture, and sensitivities.",
+    "ground_truth": "Diagnostic workup includes skin lesion swabs for microscopy, culture, and sensitivities, blood cultures for fevers over 38\u00b0C, and serum procalcitonin testing to assess for generalized sepsis.",
+    "source_document": "Bacterial Skin Infections (bacteria) \u2014 DermNet.pdf",
+    "metadata": {
+      "category": "diagnostics",
+      "difficulty": "medium"
+    }
+  },
+  {
+    "id": "eval_016",
+    "question": "What bacterial species are most frequently implicated in primary cutaneous bacterial infections?",
+    "retrieved_context": "Categorizing the specific staphylococcal and streptococcal species most frequently responsible for clinical presentations like cellulitis and impetigo.",
+    "ground_truth": "Staphylococcus aureus and Streptococcus pyogenes (Group A Streptococcus) are the primary bacterial pathogens responsible for common skin infections like cellulitis and impetigo.",
+    "source_document": "Bacterial Skin Infections (bacteria) \u2014 DermNet.pdf",
+    "metadata": {
+      "category": "microbiology",
+      "difficulty": "easy"
+    }
+  },
+  {
+    "id": "eval_017",
+    "question": "What dermoscopic criteria are used to diagnose basal cell carcinoma under Menzies' algorithm?",
+    "retrieved_context": "BCC dermoscopy criteria Menzies' algorithm: 1. Absence of pigment network. 2. Presence of >=1 among: Arborizing vessels (telangiectasia with tree-like branching), Ulceration, Blue-gray ovoid nests, Blue-gray globules, Leaf-like areas, Spoke-wheel areas.",
+    "ground_truth": "Menzies' dermoscopic algorithm requires the complete absence of a pigment network plus at least one feature among arborizing vessels, ulceration, blue-gray ovoid nests, blue-gray globules, leaf-like areas, or spoke-wheel pigmentation.",
+    "source_document": "Basal Cell Carcinoma_ Symptoms, Causes, and Treatment \u2014 DermNet.pdf",
+    "metadata": {
+      "category": "diagnostics",
+      "difficulty": "hard"
+    }
+  },
+  {
+    "id": "eval_018",
+    "question": "What surgical margin is typically recommended for standard basal cell carcinoma excision?",
+    "retrieved_context": "Should include 3 to 5 mm margin of normal skin around the tumour. Very large lesions may require flap or skin graft to repair the defect.",
+    "ground_truth": "Standard surgical excision of a basal cell carcinoma requires a 3 to 5 mm surgical margin of surrounding normal skin.",
+    "source_document": "Basal Cell Carcinoma_ Symptoms, Causes, and Treatment \u2014 DermNet.pdf",
+    "metadata": {
+      "category": "treatment",
+      "difficulty": "medium"
+    }
+  },
+  {
+    "id": "eval_019",
+    "question": "What are the hallmark clinical criteria for diagnosing Beh\u00e7et disease?",
+    "retrieved_context": "Beh\u00e7et disease is an uncommon, multi-system inflammatory condition primarily characterized by painful oral and genital sores, various dermatological eruptions, and ocular complications.",
+    "ground_truth": "Beh\u00e7et disease is diagnosed clinically based on recurrent painful oral and genital ulcerations, cutaneous lesions, ocular inflammation (such as uveitis or retinal vasculitis), and a positive pathergy reaction.",
+    "source_document": "Beh\u00e7et disease_ Background, Treatment and More.pdf",
+    "metadata": {
+      "category": "clinical_features",
+      "difficulty": "medium"
+    }
+  },
+  {
+    "id": "eval_020",
+    "question": "Which genetic marker is strongly associated with Beh\u00e7et disease?",
+    "retrieved_context": "While the exact underlying trigger remains unknown, the disorder features a strong genetic predisposition linked to HLA-B51.",
+    "ground_truth": "The HLA-B51 human leukocyte antigen allele is strongly associated with genetic susceptibility to Beh\u00e7et disease.",
+    "source_document": "Beh\u00e7et disease_ Background, Treatment and More.pdf",
+    "metadata": {
+      "category": "genetics",
+      "difficulty": "medium"
+    }
+  },
+  {
+    "id": "eval_021",
+    "question": "What is the primary morphological distinction between vesicles and bullae?",
+    "retrieved_context": "Vesicles are small blisters less than 5 mm in diameter. A bulla is a larger blister. Note that the plural of bulla is bullae.",
+    "ground_truth": "Vesicles are fluid-filled blisters measuring less than 5 mm in diameter, whereas bullae are larger blisters measuring 5 mm or greater.",
+    "source_document": "Blistering skin conditions.pdf",
+    "metadata": {
+      "category": "terminology",
+      "difficulty": "easy"
+    }
+  },
+  {
+    "id": "eval_022",
+    "question": "What diagnostic procedures are required to investigate chronic blistering skin conditions?",
+    "retrieved_context": "Diagnosis of chronic blistering diseases often requires skin biopsy for histopathology and direct immunofluorescence. A blood test for specific antibodies (indirect immunofluorescence) may also be requested.",
+    "ground_truth": "Investigation of chronic blistering disorders requires a skin biopsy for routine histopathology and direct immunofluorescence (DIF), alongside serum antibody testing via indirect immunofluorescence (IIF).",
+    "source_document": "Blistering skin conditions.pdf",
+    "metadata": {
+      "category": "diagnostics",
+      "difficulty": "medium"
+    }
+  },
+  {
+    "id": "eval_023",
+    "question": "Why does a blue naevus exhibit its characteristic blue pigmentation?",
+    "retrieved_context": "A blue naevus is a distinct type of melanocytic skin lesion characterized by its unusual pigment, which results from pigment cells residing deep within the dermis.",
+    "ground_truth": "The characteristic blue appearance of a blue naevus is caused by dermal melanocytes located deep within the dermis, where light scattering (Tyndall effect) produces a blue hue.",
+    "source_document": "Blue naevus (blue nevus).pdf",
+    "metadata": {
+      "category": "pathophysiology",
+      "difficulty": "medium"
+    }
+  },
+  {
+    "id": "eval_024",
+    "question": "Are blue naevi generally benign or malignant, and when is evaluation indicated?",
+    "retrieved_context": "A blue naevus is a distinct type of melanocytic skin lesion... details potential risks like malignant transformation.",
+    "ground_truth": "Blue naevi are predominantly benign dermal melanocytic growths, but new onset, rapid change, or atypical features warrant histological evaluation to exclude malignant blue nevus.",
+    "source_document": "Blue naevus (blue nevus).pdf",
+    "metadata": {
+      "category": "clinical_features",
+      "difficulty": "medium"
+    }
+  },
+  {
+    "id": "eval_025",
+    "question": "What bacterial pathogen is the main cause of furuncles (boils)?",
+    "retrieved_context": "Boils, medically termed furuncles, are deep bacterial infections originating within hair follicles... The primary culprit behind these painful lesions is Staphylococcus aureus.",
+    "ground_truth": "Staphylococcus aureus is the primary causative bacterium behind boils (furuncles).",
+    "source_document": "Boils (furunculosis).pdf",
+    "metadata": {
+      "category": "etiology",
+      "difficulty": "easy"
+    }
+  },
+  {
+    "id": "eval_026",
+    "question": "How do bacterial boils develop on the skin?",
+    "retrieved_context": "Staphylococcus aureus, a bacterium frequently harbored harmlessly on human skin and in nasal passages, gains entry through minor skin abrasions or friction points.",
+    "ground_truth": "Boils develop when S. aureus bacteria colonizing the skin or nares enter hair follicles via minor abrasions, cuts, or friction, causing deep folliculitis and abscess formation.",
+    "source_document": "Boils (furunculosis).pdf",
+    "metadata": {
+      "category": "pathophysiology",
+      "difficulty": "easy"
+    }
+  },
+  {
+    "id": "eval_027",
+    "question": "What histopathological and immunofluorescent findings confirm bullous pemphigoid?",
+    "retrieved_context": "Pathological examination of bullous pemphigoid shows a split under the epidermis... Direct immunofluorescence staining of a skin biopsy taken adjacent to a blister highlights antibodies along the basement membrane that lies between the epidermis and dermis.",
+    "ground_truth": "Bullous pemphigoid is confirmed by subepidermal blister formation on histopathology and linear IgG/C3 deposition along the basement membrane zone on direct immunofluorescence.",
+    "source_document": "Bullous Pemphigoid_ Causes, Symptoms, and Treatment \u2014 DermNet.pdf",
+    "metadata": {
+      "category": "diagnostics",
+      "difficulty": "hard"
+    }
+  },
+  {
+    "id": "eval_028",
+    "question": "Which patient demographic is most commonly affected by bullous pemphigoid?",
+    "retrieved_context": "Bullous pemphigoid is an autoimmune blistering skin condition that primarily targets older adults.",
+    "ground_truth": "Bullous pemphigoid primarily affects elderly individuals, typically over the age of 60 to 70.",
+    "source_document": "Bullous Pemphigoid_ Causes, Symptoms, and Treatment \u2014 DermNet.pdf",
+    "metadata": {
+      "category": "epidemiology",
+      "difficulty": "easy"
+    }
+  },
+  {
+    "id": "eval_029",
+    "question": "What causes the characteristic reddish-brown 'cayenne pepper' spots in capillaritis?",
+    "retrieved_context": "Capillaritis is characterized by tiny red and brown dots, described as cayenne pepper spots... arising when tiny blood vessels near the surface develop tiny gaps and leak blood cells. These fade away depositing haemosiderin in the upper parts of the dermis.",
+    "ground_truth": "The 'cayenne pepper' appearance stems from petechial hemorrhages due to capillary leakage, followed by hemosiderin iron pigment deposition in the upper dermis.",
+    "source_document": "Capillaritis (pigmented purpura).pdf",
+    "metadata": {
+      "category": "pathophysiology",
+      "difficulty": "medium"
+    }
+  },
+  {
+    "id": "eval_030",
+    "question": "What is Schamberg disease?",
+    "retrieved_context": "Schamberg disease (progressive pigmented purpura) is the most common form of capillaritis.",
+    "ground_truth": "Schamberg disease, or progressive pigmented purpura, is the most frequent clinical subtype of capillaritis.",
+    "source_document": "Capillaritis (pigmented purpura).pdf",
+    "metadata": {
+      "category": "classification",
+      "difficulty": "easy"
+    }
+  },
+  {
+    "id": "eval_031",
+    "question": "What is a cherry angioma and in what age group does its prevalence rise significantly?",
+    "retrieved_context": "A cherry angioma is a benign vascular skin lesion composed of proliferating endothelial cells... these harmless growths increase significantly in frequency after age forty.",
+    "ground_truth": "A cherry angioma is a benign cutaneous vascular proliferation of endothelial cells that increases markedly in prevalence in adults over 40 years of age.",
+    "source_document": "Cherry Angioma_ Features, Causes, and Removal \u2014 DermNet.pdf",
+    "metadata": {
+      "category": "epidemiology",
+      "difficulty": "easy"
+    }
+  },
+  {
+    "id": "eval_032",
+    "question": "How are cherry angiomas treated if removal is requested?",
+    "retrieved_context": "Although treatment is medically unnecessary, individuals often choose to eliminate them for appearance-related purposes using straightforward procedures like cryotherapy, electrosurgery, or vascular lasers.",
+    "ground_truth": "When cosmetic removal is desired, cherry angiomas can be treated with cryotherapy, electrosurgery (cautery), or targeted vascular laser therapy.",
+    "source_document": "Cherry Angioma_ Features, Causes, and Removal \u2014 DermNet.pdf",
+    "metadata": {
+      "category": "treatment",
+      "difficulty": "medium"
+    }
+  },
+  {
+    "id": "eval_033",
+    "question": "What pathogen causes chickenpox and how is it transmitted between individuals?",
+    "retrieved_context": "Chickenpox is caused by infection with the varicella-zoster virus, of the Herpesviridae family... spread from person to person by breathing in airborne respiratory droplets or through direct contact with fluid from open sores.",
+    "ground_truth": "Chickenpox is caused by the varicella-zoster virus (VZV) and spreads via airborne respiratory droplets or direct skin contact with vesicular blister fluid.",
+    "source_document": "Chickenpox (Varicella).pdf",
+    "metadata": {
+      "category": "virology",
+      "difficulty": "easy"
+    }
+  },
+  {
+    "id": "eval_034",
+    "question": "Why should aspirin and NSAIDs be avoided during chickenpox in children?",
+    "retrieved_context": "Avoid NSAID use outside of hospital settings due to the increased risk of severe cutaneous complications such as invasive group A streptococcal superinfections. Do not use aspirin in children as this is associated with Reye syndrome.",
+    "ground_truth": "Aspirin is contraindicated in children with varicella due to the risk of life-threatening Reye syndrome, while NSAIDs increase the risk of severe invasive Group A streptococcal skin superinfections.",
+    "source_document": "Chickenpox (Varicella).pdf",
+    "metadata": {
+      "category": "pharmacology",
+      "difficulty": "medium"
+    }
+  },
+  {
+    "id": "eval_035",
+    "question": "What underlying vascular reaction causes chilblains (pernio)?",
+    "retrieved_context": "Cold causes constriction of small arteries and veins... Persistent or prolonged vasoconstriction due to an abnormal vascular reaction to cold may result in hypoxaemia and inflammation to produce chilblains.",
+    "ground_truth": "Chilblains stem from an abnormal vascular reaction to cold where prolonged vasoconstriction of cutaneous arterioles and venules leads to tissue hypoxemia and neurovascular inflammation.",
+    "source_document": "Chilblains (Pernio)_ Symptoms and Management \u2014 DermNet.pdf",
+    "metadata": {
+      "category": "pathophysiology",
+      "difficulty": "medium"
+    }
+  },
+  {
+    "id": "eval_036",
+    "question": "What oral medication can be prescribed for severe or recurrent chilblains?",
+    "retrieved_context": "Nifedipine 20\u201360 mg per day \u2014 hastens healing time and reduces the risk of relapse.",
+    "ground_truth": "Oral nifedipine (20\u201360 mg daily), a calcium channel blocker vasodilator, accelerates healing and reduces recurrences in severe chilblains.",
+    "source_document": "Chilblains (Pernio)_ Symptoms and Management \u2014 DermNet.pdf",
+    "metadata": {
+      "category": "treatment",
+      "difficulty": "medium"
+    }
+  },
+  {
+    "id": "eval_037",
+    "question": "What are the key clinical presentation features and primary anatomical location of CNH?",
+    "retrieved_context": "Chondrodermatitis nodularis is a solitary, firm, and oval-shaped nodule, 4\u20136 mm in diameter, with central crust and surrounding erythema. In men, the most common site for CNH is the helix, while in women it is more often found on the antihelix.",
+    "ground_truth": "CNH presents as an intensely tender, firm, oval 4\u20136 mm papule/nodule with a central crust. It affects the helix most commonly in men and the antihelix in women.",
+    "source_document": "Chondrodermatitis nodularis helicis (CNH).pdf",
+    "metadata": {
+      "category": "clinical_features",
+      "difficulty": "easy"
+    }
+  },
+  {
+    "id": "eval_038",
+    "question": "What non-surgical measures help relieve CNH symptoms?",
+    "retrieved_context": "Try to avoid sleeping on one side only. Select a soft pillow. Consider fashioning a \u2018hole\u2019 in the pillow to avoid pressure on the painful area... Intralesional steroid injection... Topical nitroglycerin.",
+    "ground_truth": "Non-surgical approaches focus on relieving pressure using soft or custom hole-cut pillows, applying 1\u20132% topical nitroglycerin ointment, or administering intralesional triamcinolone injections.",
+    "source_document": "Chondrodermatitis nodularis helicis (CNH).pdf",
+    "metadata": {
+      "category": "treatment",
+      "difficulty": "medium"
+    }
+  },
+  {
+    "id": "eval_039",
+    "question": "What are comedones and how do open and closed comedones differ visually?",
+    "retrieved_context": "Comedonal acne is a common skin condition primarily characterized by small bumps known as comedones, which frequently appear on the chin and forehead as either open blackheads or closed whiteheads.",
+    "ground_truth": "Comedones are clogged pilosebaceous units; open comedones (blackheads) have dilated pores filled with oxidized melanin and sebum, whereas closed comedones (whiteheads) are covered by intact epithelium.",
+    "source_document": "Comedonal acne.pdf",
+    "metadata": {
+      "category": "clinical_features",
+      "difficulty": "easy"
+    }
+  },
+  {
+    "id": "eval_040",
+    "question": "What factors trigger the formation of comedones?",
+    "retrieved_context": "These blemishes develop when hair follicles become blocked by a combination of excess oil, cellular debris, and inflammation, triggered by various factors such as hormonal activity, specific cosmetics, and diet.",
+    "ground_truth": "Comedone formation is driven by follicular hyperkeratinization, excess sebum production under hormonal influence, pore-clogging comedogenic cosmetics, and dietary factors.",
+    "source_document": "Comedonal acne.pdf",
+    "metadata": {
+      "category": "etiology",
+      "difficulty": "medium"
+    }
+  },
+  {
+    "id": "eval_041",
+    "question": "How does the clinical presentation of cutaneous vasculitis vary according to blood vessel size?",
+    "retrieved_context": "Capillaritis presents as pigmented purpura... Small vessel vasculitis is characterised by palpable purpura. Medium vessel vasculitis is associated with nodules and livedo reticularis. Large vessel vasculitis infrequently results in cutaneous features.",
+    "ground_truth": "Capillaritis manifests as pigmented purpura; small-vessel vasculitis presents as palpable purpura; medium-vessel vasculitis produces subcutaneous nodules, ulcers, and livedo reticularis; large-vessel vasculitis rarely causes primary skin lesions.",
+    "source_document": "Cutaneous Vasculitis_ Classification, Causes, and Features \u2014 DermNet.pdf",
+    "metadata": {
+      "category": "classification",
+      "difficulty": "hard"
+    }
+  },
+  {
+    "id": "eval_042",
+    "question": "What are the three proposed immunopathologic mechanisms of blood vessel injury in vasculitis?",
+    "retrieved_context": "Direct injury to the vessel wall by bacteria or viruses. Indirect injury by activation of antibodies. Indirect injury through activation of complement, a group of proteins in the blood and tissue fluids.",
+    "ground_truth": "Vessel damage occurs through direct microbial injury, immune complex deposition / antibody activation, or complement system cascade activation.",
+    "source_document": "Cutaneous Vasculitis_ Classification, Causes, and Features \u2014 DermNet.pdf",
+    "metadata": {
+      "category": "pathophysiology",
+      "difficulty": "hard"
+    }
+  },
+  {
+    "id": "eval_043",
+    "question": "What composition forms a cutaneous horn and what proportion of horns stem from malignant or premalignant bases?",
+    "retrieved_context": "A cutaneous horn (cornu cutaneum) is a hard conical projection from the skin, made of compact keratin... Around half of horns have a benign base, and half are premalignant or malignant.",
+    "ground_truth": "A cutaneous horn is composed of compacted keratin; approximately 50% of underlying bases are benign, while the remaining 50% are premalignant (e.g., actinic keratosis) or malignant (e.g., squamous cell carcinoma).",
+    "source_document": "Cutaneous horn.pdf",
+    "metadata": {
+      "category": "pathology",
+      "difficulty": "medium"
+    }
+  },
+  {
+    "id": "eval_044",
+    "question": "Why is histological examination of the base mandatory when managing a cutaneous horn?",
+    "retrieved_context": "Histological examination of the horn base is crucial to rule out malignancy, as there are no certain clinical features that can definitively distinguish benign lesions from skin cancer.",
+    "ground_truth": "Biopsy and histopathology of the lesion base are mandatory because clinical appearance alone cannot differentiate between a benign base and underlying invasive squamous cell carcinoma.",
+    "source_document": "Cutaneous horn.pdf",
+    "metadata": {
+      "category": "diagnostics",
+      "difficulty": "medium"
+    }
+  },
+  {
+    "id": "eval_045",
+    "question": "What are the major clinical subtypes of cutaneous lupus erythematosus (CLE)?",
+    "retrieved_context": "Cutaneous lupus erythematosus (CLE) is classified as: Acute (ACLE), Subacute (SCLE), Intermittent (lupus tumidus), Chronic (CCLE) eg, discoid lupus (DLE), lupus profundus, chilblain lupus erythematosus.",
+    "ground_truth": "CLE is divided into four main subtypes: Acute Cutaneous Lupus (ACLE), Subacute Cutaneous Lupus (SCLE), Intermittent CLE (lupus tumidus), and Chronic Cutaneous Lupus (CCLE, including discoid lupus).",
+    "source_document": "Cutaneous lupus erythematosus.pdf",
+    "metadata": {
+      "category": "classification",
+      "difficulty": "medium"
+    }
+  },
+  {
+    "id": "eval_046",
+    "question": "What skin rash classically characterizes acute cutaneous lupus erythematosus (ACLE)?",
+    "retrieved_context": "Localised acute CLE: malar \u2018butterfly' rash \u2013 redness and swelling over both cheeks, sparing the nasolabial folds, lasting hours to days.",
+    "ground_truth": "Localised ACLE presents with a classic malar 'butterfly' rash\u2014erythema and edema across the malar eminences and nasal bridge that characteristically spares the nasolabial folds.",
+    "source_document": "Cutaneous lupus erythematosus.pdf",
+    "metadata": {
+      "category": "clinical_features",
+      "difficulty": "easy"
+    }
+  },
+  {
+    "id": "eval_047",
+    "question": "What genetic mutation causes Darier disease and what is its inheritance pattern?",
+    "retrieved_context": "Darier disease is a rare autosomal dominant genetic disorder... The condition stems from an inherited mutation in the ATP2A2 gene, which disrupts the vital cellular calcium transport required to properly bind skin cells together.",
+    "ground_truth": "Darier disease is an autosomal dominant inherited disorder caused by mutations in the ATP2A2 gene encoding the SERCA2 calcium pump, leading to acantholysis (loss of cell adhesion).",
+    "source_document": "Darier disease.pdf",
+    "metadata": {
+      "category": "genetics",
+      "difficulty": "hard"
+    }
+  },
+  {
+    "id": "eval_048",
+    "question": "What clinical features affect the skin and nails in patients with Darier disease?",
+    "retrieved_context": "causing rough, scaly, and crusty bumps to form across oily skin regions and body folds... affected individuals frequently display distinct nail abnormalities, such as vertical red and white stripes accompanied by V-shaped edge nicks.",
+    "ground_truth": "Skin presents with greasy, crusted hyperkeratotic papules in seborrheic distribution; nails characteristically show longitudinal red and white bands with distal V-shaped nicks.",
+    "source_document": "Darier disease.pdf",
+    "metadata": {
+      "category": "clinical_features",
+      "difficulty": "medium"
+    }
+  },
+  {
+    "id": "eval_049",
+    "question": "What recurrence rate is associated with surgical excision of chondrodermatitis nodularis?",
+    "retrieved_context": "CNH has a 10\u201330% recurrence rate after surgery.",
+    "ground_truth": "Chondrodermatitis nodularis helicis carries a 10% to 30% recurrence rate following surgical excision.",
+    "source_document": "Chondrodermatitis nodularis helicis (CNH).pdf",
+    "metadata": {
+      "category": "prognosis",
+      "difficulty": "medium"
+    }
+  },
+  {
+    "id": "eval_050",
+    "question": "What specialized surgical technique offers the highest cure rates for high-risk facial basal cell carcinoma?",
+    "retrieved_context": "Mohs micrographically controlled surgery involves examining carefully marked excised tissue under the microscope... Used in high-risk areas of the face around eyes, lips, and nose. Very high cure rates achieved.",
+    "ground_truth": "Mohs micrographic surgery offers the highest cure rates for BCC located in high-risk cosmetic and anatomical sites on the face.",
+    "source_document": "Basal Cell Carcinoma_ Symptoms, Causes, and Treatment \u2014 DermNet.pdf",
+    "metadata": {
+      "category": "treatment",
+      "difficulty": "medium"
+    }
+  }
+]
