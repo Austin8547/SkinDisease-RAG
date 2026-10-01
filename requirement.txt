@@ -1,0 +1,21 @@
+streamlit
+python-dotenv
+
+# RAG / LangChain
+langchain
+langchain-core
+langchain-groq
+langgraph
+
+# Embeddings
+sentence-transformers
+torch
+
+# Vector Database
+chromadb
+
+# Data / Utilities
+numpy
+pandas
+Pillow
+
