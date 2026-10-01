@@ -1,25 +1,74 @@
+import json
 from retrieval import retrieve, retrieve_images
 from langchain_groq import ChatGroq
+from langchain.agents import create_agent
+from langchain.agents.middleware import SummarizationMiddleware
+from langgraph.checkpoint.memory import InMemorySaver
 
-# Initialize LLM
+
+
 llm = ChatGroq(
     model="qwen/qwen3.8-27b",
     temperature=0
 )
 
 
-def generate_answer(query, max_images=3):
-    # 1. Retrieve text chunks from ChromaDB
+# ============================================================
+# Conversation Memory + Summarization Middleware
+# ============================================================
+
+# In-memory checkpointer.
+#
+# Each unique thread_id represents one conversation/session.
+#
+# IMPORTANT:
+# This is suitable for development/testing.
+# For production, we can later replace this with SQLite/PostgreSQL.
+checkpointer = InMemorySaver()
+
+
+summarization_middleware = SummarizationMiddleware(
+    model=llm,
+
+    # Start summarizing when conversation reaches 10 messages.
+    #
+    # Example:
+    # User + Assistant = 2 messages
+    # 5 turns = 10 messages
+    trigger=("messages", 10),
+
+    # After summarization, keep the most recent 6 messages
+    # in their original form.
+    keep=("messages", 6),
+)
+
+
+# ============================================================
+# Retrieval Tool
+# ============================================================
+
+def search_skin_knowledge_base(query: str) -> str:
+    """
+    Search the skin disease knowledge base.
+
+    This function is exposed to the conversational agent as a tool.
+    The agent can use it to retrieve relevant documents.
+    """
+
     results = retrieve(query, top_k=5)
 
     if not results:
-        return {
-            "answer": "No relevant documents were found in the knowledge base.",
+        return json.dumps({
+            "results": [],
             "images": []
-        }
+        })
 
-    # 2. Build text context for LLM
+    # --------------------------------------------------------
+    # Build text context
+    # --------------------------------------------------------
+
     context = ""
+
     for result in results:
         context += f"""
 Disease: {result["disease"]}
@@ -29,68 +78,282 @@ Source: {result["source_pdf"]}
 
 """
 
-    # 3. Retrieve relevant images using source_pdf from top text results
+    # --------------------------------------------------------
+    # Retrieve images from the same source PDFs
+    # --------------------------------------------------------
+
     images = []
     seen_sources = set()
 
     for result in results:
+
         source_pdf = result["source_pdf"]
 
-        # Avoid searching the exact same PDF multiple times
         if source_pdf not in seen_sources:
+
             seen_sources.add(source_pdf)
-            matched = retrieve_images(source_pdf, max_images=max_images)
+
+            matched = retrieve_images(
+                source_pdf,
+                max_images=3
+            )
+
             images.extend(matched)
 
-        # Stop collecting images once target threshold is reached
-        if len(images) >= max_images:
-            images = images[:max_images]
+        if len(images) >= 3:
+            images = images[:3]
             break
 
-    # 4. Construct Prompt
-    prompt = f"""
-You are a medical information assistant.
+    # --------------------------------------------------------
+    # Return both text and image metadata
+    # --------------------------------------------------------
 
-Answer the user's question using the provided context.
+    return json.dumps({
+        "context": context,
+        "images": images
+    })
 
-If the answer is not available in the context, say that
-the information is not available in the provided knowledge base.
 
-Context:
-{context}
+# ============================================================
+# Conversational RAG Agent
+# ============================================================
 
-Question:
-{query}
+SYSTEM_PROMPT = """
+You are a medical information assistant specializing in skin diseases.
 
-Answer:
+You answer questions using the provided skin-disease knowledge base.
+
+IMPORTANT RULES:
+
+1. Always use the search_skin_knowledge_base tool to retrieve
+   information before answering knowledge-base questions.
+
+2. Use the conversation history to understand follow-up questions.
+
+3. If the user says things such as:
+   - "What about its symptoms?"
+   - "How is it treated?"
+   - "Is it contagious?"
+   - "What about the previous disease?"
+
+   use the previous conversation to understand what they are referring to.
+
+4. Do not invent medical information.
+
+5. If the required information is not available in the retrieved
+   knowledge base, clearly say that the information is not available
+   in the provided knowledge base.
+
+6. The retrieved context is the primary source of factual information.
+
+7. Give clear and concise answers.
+
+8. This system is for educational/informational purposes and is not
+   a replacement for professional medical diagnosis or treatment.
+
+When using the retrieval tool, formulate a complete search query.
+For example:
+
+Conversation:
+User: What is psoriasis?
+Assistant: ...
+
+User: What are its symptoms?
+
+The retrieval query should be something like:
+"What are the symptoms of psoriasis?"
+
+rather than simply:
+"What are its symptoms?"
 """
 
-    # 5. Generate Answer via LLM
-    response = llm.invoke(prompt)
 
-    # Return structured dict with text answer and matching images
+# Create the conversational agent once.
+#
+# The checkpointer stores conversation state.
+# The summarization middleware automatically compresses
+# older conversation messages when the trigger is reached.
+rag_agent = create_agent(
+    model=llm,
+
+    tools=[
+        search_skin_knowledge_base
+    ],
+
+    system_prompt=SYSTEM_PROMPT,
+
+    middleware=[
+        summarization_middleware
+    ],
+
+    checkpointer=checkpointer,
+)
+
+
+# ============================================================
+# Main RAG Function
+# ============================================================
+
+def generate_answer(
+    query,
+    session_id="default",
+    max_images=3
+):
+    """
+    Generate a conversational RAG answer.
+
+    Parameters
+    ----------
+    query : str
+        Current user question.
+
+    session_id : str
+        Unique ID for the conversation.
+
+        Same session_id
+            -> remembers previous conversation.
+
+        Different session_id
+            -> starts a separate conversation.
+
+    max_images : int
+        Maximum number of images to return.
+
+    Returns
+    -------
+    dict
+        {
+            "answer": str,
+            "images": list
+        }
+    """
+
+    # --------------------------------------------------------
+    # Each session gets its own LangGraph thread.
+    # --------------------------------------------------------
+
+    config = {
+        "configurable": {
+            "thread_id": session_id
+        }
+    }
+
+    # --------------------------------------------------------
+    # Invoke conversational agent
+    # --------------------------------------------------------
+
+    result = rag_agent.invoke(
+        {
+            "messages": [
+                {
+                    "role": "user",
+                    "content": query
+                }
+            ]
+        },
+        config=config
+    )
+
+    # --------------------------------------------------------
+    # Get final assistant message
+    # --------------------------------------------------------
+
+    messages = result.get("messages", [])
+
+    answer = ""
+
+    for message in reversed(messages):
+
+        # AIMessage
+        if getattr(message, "type", None) == "ai":
+
+            content = message.content
+
+            if isinstance(content, str):
+                answer = content
+
+            else:
+                # Handle providers returning structured content
+                answer = str(content)
+
+            break
+
+    # --------------------------------------------------------
+    # Extract retrieved images from tool messages
+    # --------------------------------------------------------
+
+    images = []
+
+    for message in reversed(messages):
+
+        if getattr(message, "type", None) != "tool":
+            continue
+
+        content = getattr(message, "content", "")
+
+        try:
+
+            tool_result = json.loads(content)
+
+            if "images" in tool_result:
+
+                images = tool_result["images"]
+
+                if images:
+                    break
+
+        except (json.JSONDecodeError, TypeError):
+
+            continue
+
+    # --------------------------------------------------------
+    # Limit images
+    # --------------------------------------------------------
+
+    images = images[:max_images]
+
+    # --------------------------------------------------------
+    # Return result
+    # --------------------------------------------------------
+
     return {
-        "answer": response.content,
+        "answer": answer,
         "images": images
     }
 
 
-if __name__ == "__main__":
-    query = "What causes acanthosis nigricans?"
+# ============================================================
+# Optional: Get current conversation history
+# ============================================================
 
-    result = generate_answer(query)
+def get_conversation(session_id="default"):
+    """
+    Return the stored conversation for a session.
 
-    print("\n" + "=" * 50)
-    print("ANSWER:")
-    print("=" * 50)
-    print(result["answer"])
+    Useful for debugging and later displaying chat history.
+    """
 
-    print("\n" + "=" * 50)
-    print("RETRIEVED IMAGES:")
-    print("=" * 50)
-    if result["images"]:
-        for idx, img in enumerate(result["images"], 1):
-            print(f"[{idx}] Disease: {img.get('disease')}")
-            print(f"    Path/URL: {img.get('image_path', img.get('file_name', 'N/A'))}")
-    else:
-        print("No matching images found in metadata.")
+    config = {
+        "configurable": {
+            "thread_id": session_id
+        }
+    }
+
+    state = rag_agent.get_state(config)
+
+    return state.values.get("messages", [])
+
+
+# ============================================================
+# Clear a conversation
+# ============================================================
+
+def clear_conversation(session_id="default"):
+    """
+    Clear a conversation session.
+
+    This removes the checkpoint for the specified thread.
+    """
+
+    checkpointer.delete_thread(session_id)
+
