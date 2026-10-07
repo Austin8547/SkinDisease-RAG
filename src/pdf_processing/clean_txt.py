@@ -1,9 +1,11 @@
 import json
 import re
 from pathlib import Path
+from config import TEXT_PATH, CLEANED_TEXT_PATH
 
-input_file = Path("/home/austin/agentic/skin_rag/data/text.json")
-output_file = Path("/home/austin/agentic/skin_rag/data/clean_text.json")
+
+input_file = Path(TEXT_PATH)
+output_file = Path(CLEANED_TEXT_PATH)
 
 # Load extracted text
 with open(input_file, "r", encoding="utf-8") as f:

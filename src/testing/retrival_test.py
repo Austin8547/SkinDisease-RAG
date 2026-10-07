@@ -2,13 +2,13 @@ import chromadb
 
 from sentence_transformers import SentenceTransformer
 
-
+from src.config import CHROMA_PATH, EMBEDDING_MODEL
 # --------------------------------------------------
 # 1. Load embedding model
 # --------------------------------------------------
 
 model = SentenceTransformer(
-    "BAAI/bge-base-en-v1.5",
+    EMBEDDING_MODEL,
     device="cuda"
 )
 
@@ -18,7 +18,7 @@ model = SentenceTransformer(
 # --------------------------------------------------
 
 client = chromadb.PersistentClient(
-    path="/home/austin/agentic/skin_rag/data/chroma_db"
+    path=CHROMA_PATH
 )
 
 collection = client.get_collection(

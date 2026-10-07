@@ -4,13 +4,13 @@ import os
 import chromadb
 from sentence_transformers import SentenceTransformer
 
-
+from config import EMBEDDING_MODEL, CHROMA_PATH, METADTA_PATH
 # --------------------------------------------------
 # Embedding model
 # --------------------------------------------------
 
 model = SentenceTransformer(
-    "BAAI/bge-base-en-v1.5",
+    EMBEDDING_MODEL,
     device="cuda"
 )
 
@@ -20,7 +20,7 @@ model = SentenceTransformer(
 # --------------------------------------------------
 
 client = chromadb.PersistentClient(
-    path="/home/austin/agentic/skin_rag/data/chroma_db"
+    path=CHROMA_PATH
 )
 
 collection = client.get_collection(
@@ -32,11 +32,7 @@ collection = client.get_collection(
 # Image metadata
 # --------------------------------------------------
 
-IMAGE_METADATA_PATH = (
-    "/home/austin/agentic/skin_rag/data/meta_data.json"
-)
-
-with open(IMAGE_METADATA_PATH, "r") as f:
+with open(METADTA_PATH, "r") as f:
     image_metadata = json.load(f)
 
 

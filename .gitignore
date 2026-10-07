@@ -2,3 +2,4 @@ images/
 dermnetfiles/
 __pycache__/
 /home/austin/agentic/skin_rag/dataset/chroma_db
+__init__.py

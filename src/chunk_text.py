@@ -3,10 +3,11 @@ from pathlib import Path
 
 from langchain_core.documents import Document
 from langchain_text_splitters import RecursiveCharacterTextSplitter
+from config import CLEANED_TEXT_PATH, CHUNKS_PATH, CHUNK_SIZE, CHUNK_OVERLAP
 
 
-input_file = Path("/home/austin/agentic/skin_rag/data/clean_text.json")
-output_file = Path("/home/austin/agentic/skin_rag/data/chunks.json")
+input_file = Path(CLEANED_TEXT_PATH)
+output_file = Path(CHUNKS_PATH)
 
 
 # 1. Load cleaned JSON
@@ -31,8 +32,8 @@ for item in data:
 
 # 3. Create text splitter
 splitter = RecursiveCharacterTextSplitter(
-    chunk_size=500,
-    chunk_overlap=50
+    chunk_size=CHUNK_SIZE,
+    chunk_overlap=CHUNK_OVERLAP
 )
 
 

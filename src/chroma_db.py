@@ -1,15 +1,15 @@
 import json
 from pathlib import Path
 
+# pyrefly: ignore [missing-import]
 import chromadb
 
-
+from config import EMBEDDING_PATH, CHROMA_PATH  
 # --------------------------------------------------
-# 1. Paths
+# 1. File paths
 # --------------------------------------------------
-
-input_file = Path("/home/austin/agentic/skin_rag/data/embedded_chunks.json")
-chroma_path = Path("/home/austin/agentic/skin_rag/data/chroma_db")
+input_file = Path(EMBEDDING_PATH)
+chroma_path = Path(CHROMA_PATH)
 
 
 # --------------------------------------------------

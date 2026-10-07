@@ -1,19 +1,17 @@
 import json
 from pathlib import Path
-
 from sentence_transformers import SentenceTransformer
 
 
-# --------------------------------------------------
-# 1. File paths
-# --------------------------------------------------
-
-input_file = Path("/home/austin/agentic/skin_rag/data/chunks.json")
-output_file = Path("/home/austin/agentic/skin_rag/data/embedded_chunks.json")
+from config import CHUNKS_PATH, EMBEDDING_PATH, EMBEDDING_MODEL
 
 
-# --------------------------------------------------
-# 2. Load chunks
+
+input_file = Path(CHUNKS_PATH)
+output_file = Path(EMBEDDING_PATH)
+
+
+# 1. Load chunks
 # --------------------------------------------------
 
 with open(input_file, "r", encoding="utf-8") as f:
@@ -27,7 +25,7 @@ print(f"Loaded {len(chunks)} chunks")
 # --------------------------------------------------
 
 model = SentenceTransformer(
-    "BAAI/bge-base-en-v1.5",
+    EMBEDDING_MODEL,
     device="cuda"
 )
 
